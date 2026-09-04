@@ -23,6 +23,11 @@ Método de limpieza de rayas: raya al inicio de línea pasa a viñeta; raya ante
 ## Desinstalar plugins (Settings > Plugins)
 brand-voice, small-business, customer-support, sales, human-resources, legal, finance, bio-research, atlan si aparece.
 
+## Motion: consolidación de la serie W
+- `motionbootcamp/` reemplaza a SIETE entradas: `motionbootcamp`, `motion-pipeline-w-series`, `w3-prioritize-ad-ideas`, `w4-makeads`, `w5-analyze`, `w6-explore`, `w7-exploit`. El contenido de las cinco W vive en `references/` y solo se abre desde /motionbootcamp.
+- Borrar las siete anteriores DONDE ESTÉN. Ojo: existen dos veces, como skills de usuario (con descripción "Actívala SIEMPRE", las peligrosas) y dentro del plugin (neutralizadas). Van las dos.
+- `motion-router` se queda tal cual. Es la entrada real para ads.
+- Las skills en inglés de Motion (creative-strategy, concept-engine, build-brief, analyze-ad, etc.) se quedan: son el sistema B para BULK HVAC, Celestina, Sparked Reactions y la cuenta propia.
+
 ## No tocar
-- Sistema B de Motion (skills en inglés, motion-router, serie W): se queda. Ver nota en el chat.
 - Las tres protocolos de Notion (brand-brain, market-research, messaging-angles): no son de escritura.

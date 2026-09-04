@@ -1,0 +1,86 @@
+{
+  "skill_name": "motion-creative-pipeline",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tengo una marca de suplementos de magnesio. Mis ads de Meta llevan 3 meses corriendo los mismos conceptos y el CPA subió un 38% el último mes. Tengo aquí el CSV de reviews de Amazon (450 reviews) y el link de mi ads library: https://www.facebook.com/ads/library/?id=123456. No sé si seguir con lo mismo o cambiar de ángulo. ¿Por dónde empiezo?",
+      "expected_output": "El agente ejecuta el Resource Collection Gate antes de cualquier análisis: presenta el inventario de inputs para W3, confirma los CRÍTICOS recibidos (reviews CSV, ads library), pregunta por los VALIDADORES/ENRIQUECEDORES faltantes (Atria, Foreplay, capacidad de producción), y publica el bloque de estado de recursos antes de continuar. Luego activa W3: (1) analiza la ads library, (2) extrae 5 personas con citas de reviews, (3) mapea el GAP, (4) formula el diagnóstico de 1-2 oraciones, (5) aplica Evidence Ranking, (6) filtra por capacidad de producción priorizando Low Hanging Fruit, (7) genera el JSON con resource_gate y w4_handoff.",
+      "files": [],
+      "expectations": [
+        "El agente ejecuta el Resource Collection Gate y presenta el bloque de estado de recursos antes de cualquier análisis",
+        "El agente confirma los inputs CRÍTICOS recibidos (reviews CSV, ads library) y pregunta por los faltantes",
+        "El agente activa W3 y no W4, W5, W6 o W7",
+        "El agente pregunta por la capacidad de producción del equipo O declara explícitamente un límite asumido (ej: 3-5 conceptos) antes de construir el roadmap",
+        "El sprint activo contiene únicamente el número de ideas que caben en la capacidad declarada o asumida",
+        "Las ideas HIGH CONFIDENCE que no caben en el sprint van al Icebox con etiqueta NEXT SPRINT",
+        "El agente prioriza dentro del sprint las ideas de Tier 1 sobre Tier 3 con justificación de que desbloquean CPA signal más rápido",
+        "El agente analiza la ads library para extraer personas actualmente targetadas",
+        "El agente identifica y nombra el GAP entre personas de ads y personas reales",
+        "El diagnóstico de marca es 1-2 oraciones concretas que responden qué debe hacer el brand",
+        "Las personas extraídas tienen al menos una cita de review real o el agente declara que no puede validarlas",
+        "El output final incluye un JSON estructurado con los campos resource_gate y w4_handoff"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Aquí están mis métricas de la última semana en Meta. Prospecting solamente. ROAS objetivo: 2.5x.\n\nAD-001 (Hook: 'Si tienes el estómago inflamado después de comer...')\n- Spend: $1,847\n- First Frame Retention: 94%\n- Thumb Stop: 31%\n- Hold Rate: 18%\n- CTR: 4.2%\n- ROAS: 2.8x\n- Frecuencia 7d: 2.8 (subió 22% vs. semana anterior)\n- Spend trend: estable\n\nAD-002 (Hook: 'Stop wasting money on supplements that don't work')\n- Spend: $620\n- First Frame Retention: 88%\n- Thumb Stop: 19%\n- Hold Rate: 67%\n- CTR: 1.1%\n- ROAS: 0.9x\n- Frecuencia 7d: 1.4\n\nAD-003 (Hook: [Visual: mano sosteniendo el producto])\n- Spend: $340\n- First Frame Retention: 91%\n- Thumb Stop: 41%\n- Hold Rate: 72%\n- CTR: 6.8%\n- ROAS: 3.1x\n- Frecuencia 7d: 1.1\n\nAD-004 (Hook: 'Gut health tip your doctor won't tell you')\n- Spend: $95\n- First Frame Retention: 96%\n- Thumb Stop: 38%\n- Hold Rate: 55%\n- CTR: 3.9%\n- ROAS: 1.4x\n- Frecuencia 7d: 1.2\n\n¿Qué hago con cada uno?",
+      "expected_output": "El agente ejecuta el Resource Collection Gate para W5: el reporte de Motion está presente (datos pegados directamente), confirma que son solo prospecting. Pregunta si hay reporte de Atria disponible para validar rentabilidad real. Luego activa W5 con diagnóstico secuencial. AD-001: TRUE + FATIGUE_WARNING por frecuencia +22% con spend estable. Acción: iteración preventiva inmediata. AD-002: FALSE, Thumb Stop bajo + Hold Rate alto + CTR muy bajo indica problema en body/oferta, no solo en hook. NO recomendar únicamente swap de hook. AD-003: TRUE, top performer. AD-004: NEEDS MORE TIME. Output incluye JSON con w6_handoff.",
+      "files": [],
+      "expectations": [
+        "El agente ejecuta el Resource Collection Gate para W5 y confirma estado de los inputs antes de analizar",
+        "El agente pregunta si hay reporte de Atria disponible antes de continuar",
+        "El agente activa W5 y no otra etapa",
+        "AD-001 se clasifica como TRUE pero con FATIGUE_WARNING explícita por frecuencia +22% en 7 días",
+        "El agente recomienda iteración preventiva para AD-001 antes de que colapse, no esperar",
+        "AD-002 se clasifica como FALSE con diagnóstico del bottleneck específico",
+        "AD-002: el agente identifica que Thumb Stop bajo + Hold Rate alto + CTR muy bajo indica problema en el body o la oferta, no solo en el hook",
+        "AD-002: el agente NO recomienda únicamente cambiar el hook como solución",
+        "AD-002: el agente identifica First Frame Retention 88% debajo del benchmark 90%",
+        "AD-003 se identifica como top performer sin señal de fatiga",
+        "AD-004 se clasifica como NEEDS MORE TIME por spend insuficiente con señales positivas",
+        "Las instrucciones de iteración son específicas e incluyen tier 1/2/3",
+        "El output final incluye un JSON estructurado con el campo w6_handoff"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Tenemos un winning ad que lleva 6 semanas. ROAS 3.4x estable, CTR 5.1%, corriendo en 4 ad sets distintos, spend escalando semana a semana. Es un video UGC de 45 segundos en formato 9:16: una mujer de 35 años cuenta cómo el producto le quitó la inflamación abdominal después de pasta. Hook visual: ella señalando su estómago antes de comer. El driver parece ser el script porque ya lo probamos con dos talents distintos y los dos funcionaron. Queremos escalar esto al máximo. ¿Cómo lo hacemos?",
+      "expected_output": "El agente ejecuta el Resource Collection Gate para W7: confirma que tiene el winning ad descrito, pregunta explícitamente si hay reporte de Atria disponible para validar la rentabilidad real antes de autorizar escala, y pregunta si hay boards de Foreplay o footage library disponible. Publica el bloque de estado antes de continuar. Luego activa W7: verifica los 5 criterios de winner (VERDE), deconstruye el winner en 4 componentes, identifica el script como driver, diseña Easy Scales incluyendo adaptaciones de placement 9:16 a 1:1/4:5, Expansion Phase con persona testing, estructura en batches, define el Refresh V2.0 y produce el JSON con feedback_loop y w3_rediagnosis_trigger.",
+      "files": [],
+      "expectations": [
+        "El agente ejecuta el Resource Collection Gate para W7 antes de cualquier análisis",
+        "El agente pregunta explícitamente si hay reporte de Atria disponible, es un VALIDADOR para decisiones de escala",
+        "El agente publica el bloque de estado de recursos con gate_status antes de continuar",
+        "El agente activa W7 y no otra etapa",
+        "El agente verifica los 5 criterios de winner válido y confirma color tag VERDE",
+        "El agente deconstruye el winner en los 4 componentes: hook, angle, format, emotional driver",
+        "El agente identifica el script como el driver del performance por el dato de 2 talents",
+        "El plan de Easy Scales incluye adaptaciones de placement: 9:16 a 1:1 o 4:5 para Feed",
+        "El agente explica que los diferentes placements acceden a CPMs distintos o audiencias no solapadas",
+        "El agente menciona text overlays específicos para compensar el reencuadre al adaptar el formato",
+        "El plan incluye persona testing en la Expansion Phase",
+        "Se define cuándo y bajo qué condición se activa el Refresh V2.0",
+        "El output final incluye un JSON con los campos feedback_loop y w3_rediagnosis_trigger"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Llevamos 2 semanas probando los 5 conceptos nuevos que salieron de la sesión de priorización de la semana pasada. Todos tienen ROAS < 0.5, Thumbstop < 10% y los que llegaron a gastar algo se apagaron solos en 48 horas. El cliente está furioso y quiere pausar todo y replantear la estrategia. Nosotros queremos saber si hay algo que iterar o si realmente hay que empezar de cero. ¿Qué hacemos?",
+      "expected_output": "El agente ejecuta el Resource Collection Gate antes de diagnosticar: pregunta si tienen el reporte de Motion con las métricas detalladas de los 5 conceptos y si hay reporte de Atria. Con los datos disponibles, diagnostica que ROAS < 0.5 + Thumb Stop < 10% en TODOS los conceptos indica falla sistémica: el problema es el ángulo de comunicación o el Product-Market Fit, no la ejecución. Activa Hard Pivot hacia W3. Crítico: el agente no dice solo 'volvamos a empezar', especifica qué información del sprint fallido alimenta el próximo W3: los 5 ángulos agotados con tag DO_NOT_REPEAT_YET, las personas del sprint anterior marcadas como HYPOTHESIS_UNCONFIRMED para re-validar, y el diagnóstico de marca declarado como REQUIRES_REVISION. Puede validar la decisión de pausar el spend activo. No recomienda iterar hooks.",
+      "files": [],
+      "expectations": [
+        "El agente ejecuta el Resource Collection Gate antes de diagnosticar, pregunta por reporte de Motion y Atria",
+        "El agente NO recomienda iterar o cambiar hooks de los conceptos actuales como solución principal",
+        "El agente diagnostica explícitamente que el patrón de falla total indica un problema de ángulo o PMF, no de ejecución",
+        "El agente activa Hard Pivot y recomienda volver a W3 para rediagnóstico completo",
+        "El agente propaga el Feedback Loop: especifica que los 5 ángulos agotados van al próximo W3 con tag DO_NOT_REPEAT_YET",
+        "El agente propaga el Feedback Loop: las personas del sprint anterior se marcan como HYPOTHESIS_UNCONFIRMED para re-validar en W3, no se asumen como válidas",
+        "El agente menciona que el diagnóstico de marca del ciclo anterior debe marcarse como REQUIRES_REVISION",
+        "El agente valida o al menos no contradice la decisión de pausar el spend activo durante el rediagnóstico",
+        "El agente distingue entre falla de un ad (iterar) y falla de todos los conceptos (rediagnosticar)",
+        "El agente no usa lenguaje de pánico ni de culpa, presenta el rediagnóstico como el paso correcto y profesional",
+        "El output incluye la agenda o los inputs estructurados para reactivar W3, no una respuesta conversacional sin estructura"
+      ]
+    }
+  ]
+}

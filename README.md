@@ -14,6 +14,7 @@ Lo que no tenga esas cuatro piezas no vive aquí.
 | Carpeta | Qué es | Estado |
 |---|---|---|
 | `redaccion-loop/` | Karpathy loop para ganchos en español. Generador `hook-autonomo`, verificador de dos niveles, 16 briefs, ratchet. | Ciclo 0 generado, baseline pendiente de re-puntuar con verify v1.4 |
+| `skills-limpias/` | Paquete de instalación 2026-09-03: `marca-reglas-duras` (Capa 0), `hook-autonomo` v1.1, 22 skills de escritura en español sin rayas largas y con la línea de Capa 0, injerto para `voc-mining`. Ver `skills-limpias/INSTALAR.md`. | Listo para instalar en claude.ai |
 
 Cada carpeta tiene su README con requisitos, arranque y cuándo volver a claude.ai.
 
